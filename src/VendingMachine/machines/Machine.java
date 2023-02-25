@@ -9,7 +9,7 @@ public class Machine<T extends Product> {
     protected ArrayList<T> products;
 
     public Machine(String name) {
-        this.name = name.toLowerCase();
+        this.name = name;
         this.products = new ArrayList<>();
     }
 

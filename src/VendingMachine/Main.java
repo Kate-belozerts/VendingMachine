@@ -13,9 +13,9 @@ public class Main {
     public static void main(String[] args) {
         int count = 5;
 
-        DrinkMachine<Drink> drinkMachine = createDrinkMachine(count);
-//        Machine<Product> productMachine = createMachine(count);
-//        HotDrinkVendingMachine<HotDrink> hotDrinkMachine = createHotDrinkMachine(count);
+//        DrinkMachine drinkMachine = createDrinkMachine(count);
+        Machine<Product> productMachine = createMachine(count);
+//        HotDrinkVendingMachine hotDrinkMachine = createHotDrinkMachine(count);
 
 
         //Для экспериментов:
@@ -23,24 +23,19 @@ public class Main {
         Drink cola = new Drink("Coca-cola", 80, 500);
         HotDrink tea = new HotDrink("Green tea", 200, 500, 90);
 
-//        drinkMachine.addProduct(snickers);
-        drinkMachine.addProduct(cola);
-//        drinkMachine.addProduct(tea);
+        productMachine.addProduct(snickers);
+        productMachine.addProduct(cola);
+        productMachine.addProduct(tea);
 
-//        hotDrinkMachine.addHotDrink(tea);
-//        hotDrinkMachine.addHotDrink(cola);
-//        hotDrinkMachine.addHotDrink(snickers);
-
-        System.out.println(drinkMachine.getProductByName("Coca-cola"));
+        System.out.println(productMachine.getProductByName("Coca-cola"));
 //        System.out.println(hotDrinkMachine.getHotDrink("Green tea", 500, 90));
-//        System.out.println(hotDrinkMachine.getHotDrinkByName("Green tea"));
 
-        System.out.println(drinkMachine);
+        System.out.println(productMachine);
     }
 
-    static DrinkMachine<Drink> createDrinkMachine(int count) {
+    static DrinkMachine createDrinkMachine(int count) {
         String[] collectionOfDrinks = new String[]{"Coca-cola", "Juice", "Cold tea", "Sprite", "Vine"};
-        DrinkMachine<Drink> drinkMachine = new DrinkMachine<>(" ");
+        DrinkMachine drinkMachine = new DrinkMachine(" ");
 
         for (int i = 0; i < count; i++) {
             drinkMachine.addProduct(new Drink(collectionOfDrinks[new Random().nextInt(collectionOfDrinks.length)],
@@ -62,14 +57,14 @@ public class Main {
         return machine;
     }
 
-    static HotDrinkVendingMachine<HotDrink> createHotDrinkMachine(int count) {
+    static HotDrinkVendingMachine createHotDrinkMachine(int count) {
         String[] collectionOfHotDrinks = new String[]{"Green tea", "Black tea", "Red tea", "Milk oolong", "Coffee"};
-        HotDrinkVendingMachine<HotDrink> hotDrinkMachine = new HotDrinkVendingMachine<>(" ");
+        HotDrinkVendingMachine hotDrinkMachine = new HotDrinkVendingMachine(" ");
         Random rnd = new Random();
 
         for (int i = 0; i < count; i++) {
             int bound = rnd.nextInt(collectionOfHotDrinks.length);
-            hotDrinkMachine.addHotDrink(new HotDrink(collectionOfHotDrinks[bound],
+            hotDrinkMachine.addProduct(new HotDrink(collectionOfHotDrinks[bound],
                     new Random().nextInt(200), new Random().nextInt(500),
                     new Random().nextInt(300)));
         }

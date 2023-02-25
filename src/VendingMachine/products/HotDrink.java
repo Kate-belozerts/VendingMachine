@@ -1,16 +1,10 @@
 package VendingMachine.products;
 
-public class HotDrink {
-    private final String name;
-    private final double price;
+public class HotDrink extends Drink {
     private final int temperature;
-    private final int volume;
-
 
     public HotDrink(String name, double price, int volume, int temperature) {
-        this.name = name.toLowerCase();
-        this.price = price;
-        this.volume = volume;
+        super(name, price, volume);
         this.temperature = temperature;
     }
 
@@ -18,18 +12,10 @@ public class HotDrink {
         return temperature;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
     @Override
     public String toString() {
-        return "\nThis HotDrink is: " + name +
-                ", volume of cup - " + volume +
+        return "\nThis HotDrink is: " + super.getName() +
+                ", volume of cup - " + super.getVolume() +
                 ", temperature - " + temperature;
     }
 }

@@ -1,7 +1,5 @@
 package VendingMachine.products;
 
-import VendingMachine.products.Product;
-
 public class Drink extends Product {
     private final int volume;
 

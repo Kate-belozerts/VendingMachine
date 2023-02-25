@@ -1,12 +1,12 @@
 package VendingMachine.machines;
 
-import VendingMachine.products.Product;
+import VendingMachine.products.Drink;
 
 
-public class DrinkMachine<Drink extends Product> extends Machine<Drink> {
+public class DrinkMachine extends Machine<Drink> {
 
     public DrinkMachine(String name) {
-        super(name.toLowerCase());
+        super(name);
     }
 
     @Override
