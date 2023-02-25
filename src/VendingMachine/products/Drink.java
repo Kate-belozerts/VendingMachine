@@ -1,7 +1,9 @@
-package VendingMachine;
+package VendingMachine.products;
+
+import VendingMachine.products.Product;
 
 public class Drink extends Product {
-    private int volume;
+    private final int volume;
 
     public Drink(String name, double price, int volume) {
         super(name, price);
@@ -14,5 +16,12 @@ public class Drink extends Product {
 
     public void consume() {
         System.out.println("Напиток выпит");
+    }
+
+    @Override
+    public String toString() {
+        return "\nDrink is: " + super.getName() +
+                ", volume of bottle - " + volume +
+                ", price - " + super.getPrice();
     }
 }

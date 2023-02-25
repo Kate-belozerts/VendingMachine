@@ -1,4 +1,4 @@
-package VendingMachine;
+package VendingMachine.products;
 
 public class Product {
     private String name;
@@ -31,7 +31,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "The product is: " +
+        return "\nThe product is: " +
                 "name - " + name +
                 ", price - " + price;
     }
