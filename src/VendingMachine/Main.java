@@ -1,9 +1,11 @@
 package VendingMachine;
 
 import VendingMachine.machines.DrinkMachine;
+import VendingMachine.machines.FoodMachine;
 import VendingMachine.machines.HotDrinkVendingMachine;
 import VendingMachine.machines.Machine;
 import VendingMachine.products.ColdDrink;
+import VendingMachine.products.Food;
 import VendingMachine.products.HotDrink;
 import VendingMachine.products.Product;
 
@@ -14,23 +16,24 @@ public class Main {
         int count = 5;
 
 //        DrinkMachine coldDrinkMachine = createDrinkMachine(count);
-        Machine<Product> productMachine = createMachine(count);
 //        HotDrinkVendingMachine hotDrinkMachine = createHotDrinkMachine(count);
+        FoodMachine foodMachine = createFoodMachine(count);
+//        Machine<Product> productMachine = createMachine(count);
 
 
         //Для экспериментов:
-        Product snickers = new Product("Snickers", 70);
+        Food snickers = new Food("Snickers", 70);
         ColdDrink cola = new ColdDrink("Coca-cola", 80, 500);
         HotDrink tea = new HotDrink("Green tea", 200, 500, 90);
 
-        productMachine.addProduct(snickers);
-        productMachine.addProduct(cola);
-        productMachine.addProduct(tea);
+        foodMachine.addProduct(snickers);
+//        foodMachine.addProduct(cola);
+//        foodMachine.addProduct(tea);
 
-        System.out.println(productMachine.getProductByName("Coca-cola"));
+        System.out.println(foodMachine.getProductByName("Coca-cola"));
 //        System.out.println(hotDrinkMachine.getHotDrink("Green tea", 500, 90));
 
-        System.out.println(productMachine);
+        System.out.println(foodMachine);
     }
 
     static DrinkMachine createDrinkMachine(int count) {
@@ -70,5 +73,17 @@ public class Main {
         }
         System.out.println(hotDrinkMachine.getAllProducts());
         return hotDrinkMachine;
+    }
+
+    static FoodMachine createFoodMachine(int count) {
+        String[] collectionOfProducts = new String[]{"Mars", "Snickers", "Nuts", "M&Ms"};
+        FoodMachine foodMachine = new FoodMachine(" ");
+
+        for (int i = 0; i < count; i++) {
+            foodMachine.addProduct(new Food(collectionOfProducts[new Random().nextInt(collectionOfProducts.length)],
+                    new Random().nextInt(150)));
+        }
+        System.out.println(foodMachine.getAllProducts());
+        return foodMachine;
     }
 }
