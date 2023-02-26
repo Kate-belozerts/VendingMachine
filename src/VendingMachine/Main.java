@@ -3,7 +3,7 @@ package VendingMachine;
 import VendingMachine.machines.DrinkMachine;
 import VendingMachine.machines.HotDrinkVendingMachine;
 import VendingMachine.machines.Machine;
-import VendingMachine.products.Drink;
+import VendingMachine.products.ColdDrink;
 import VendingMachine.products.HotDrink;
 import VendingMachine.products.Product;
 
@@ -13,14 +13,14 @@ public class Main {
     public static void main(String[] args) {
         int count = 5;
 
-//        DrinkMachine drinkMachine = createDrinkMachine(count);
+//        DrinkMachine coldDrinkMachine = createDrinkMachine(count);
         Machine<Product> productMachine = createMachine(count);
 //        HotDrinkVendingMachine hotDrinkMachine = createHotDrinkMachine(count);
 
 
         //Для экспериментов:
         Product snickers = new Product("Snickers", 70);
-        Drink cola = new Drink("Coca-cola", 80, 500);
+        ColdDrink cola = new ColdDrink("Coca-cola", 80, 500);
         HotDrink tea = new HotDrink("Green tea", 200, 500, 90);
 
         productMachine.addProduct(snickers);
@@ -38,7 +38,7 @@ public class Main {
         DrinkMachine drinkMachine = new DrinkMachine(" ");
 
         for (int i = 0; i < count; i++) {
-            drinkMachine.addProduct(new Drink(collectionOfDrinks[new Random().nextInt(collectionOfDrinks.length)],
+            drinkMachine.addProduct(new ColdDrink(collectionOfDrinks[new Random().nextInt(collectionOfDrinks.length)],
                     new Random().nextInt(500), new Random().nextInt(1000)));
         }
         System.out.println(drinkMachine.getAllProducts());
