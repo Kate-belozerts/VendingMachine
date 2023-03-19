@@ -1,39 +1,35 @@
 package VendingMachine;
 
-import VendingMachine.machines.DrinkMachine;
-import VendingMachine.machines.FoodMachine;
-import VendingMachine.machines.HotDrinkVendingMachine;
-import VendingMachine.machines.Machine;
-import VendingMachine.products.ColdDrink;
-import VendingMachine.products.Food;
-import VendingMachine.products.HotDrink;
-import VendingMachine.products.Product;
+import VendingMachine.machines.*;
+import VendingMachine.products.*;
 
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        int count = 5;
 
-//        DrinkMachine coldDrinkMachine = createDrinkMachine(count);
-//        HotDrinkVendingMachine hotDrinkMachine = createHotDrinkMachine(count);
-        FoodMachine foodMachine = createFoodMachine(count);
-//        Machine<Product> productMachine = createMachine(count);
+        MixedMachine mixedMachine = createMixedMachine();
 
-
-        //Для экспериментов:
         Food snickers = new Food("Snickers", 70);
         ColdDrink cola = new ColdDrink("Coca-cola", 80, 500);
         HotDrink tea = new HotDrink("Green tea", 200, 500, 90);
+        Drink vine = new Drink("vine", 100, 100);
+        Product product = new Product("something", 50000);
 
-        foodMachine.addProduct(snickers);
-//        foodMachine.addProduct(cola);
-//        foodMachine.addProduct(tea);
+        mixedMachine.addProduct(snickers);
+        mixedMachine.addProduct(cola);
+        mixedMachine.addProduct(tea);
+        mixedMachine.addProduct(vine);
+        mixedMachine.addProduct(product);
+        mixedMachine.addProduct(new ColdDrink("Gin", 100, 50));
+        mixedMachine.addProduct(new Food("hamburger", 100));
 
-        System.out.println(foodMachine.getProductByName("Coca-cola"));
-//        System.out.println(hotDrinkMachine.getHotDrink("Green tea", 500, 90));
+        System.out.println(mixedMachine);
+    }
 
-        System.out.println(foodMachine);
+    static MixedMachine createMixedMachine() {
+        MixedMachine mixedMachine = new MixedMachine("machine");
+        return mixedMachine;
     }
 
     static DrinkMachine createDrinkMachine(int count) {
